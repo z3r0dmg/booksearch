@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+  <legend class="border-bottom mb-4">
+    Recent searches
+  </legend>
+	{% for item in recents %}
+		<article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ item["author"] }}</a>
+              <small class="text-muted">Published on: {{ item["publishedDate"] }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ item["title"] }}</a></h2>
+            <p class="article-content">{{ item["description"] }}</p>
+          </div>
+		</article>
+	{% endfor %}
+{% endblock content%}

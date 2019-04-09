@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+  <legend class="border-bottom mb-4">
+    Search results for {{ query }} retrieved in {{ time_taken }} seconds
+  </legend>
+	{% for result in results["items"] %}
+		<article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              {% if result["volumeInfo"]["authors"] %}
+                <a class="mr-2" href="#">{{ result["volumeInfo"]["authors"][0] }}</a>
+              {% else %}
+                <a class="mr-2" href="#">No author</a>
+              {% endif %}
+              <small class="text-muted">Published on: {{ result["volumeInfo"]["publishedDate"] }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ result["volumeInfo"]["title"] }}</a></h2>
+            <p class="article-content">{{ result["volumeInfo"]["description"] }}</p>
+          </div>
+	</article>
+	{% endfor %}
+{% endblock content%}
